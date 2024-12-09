@@ -7,6 +7,7 @@ Given n non-negative integers representing an elevation map where the width of e
 
 Example 1:
 
+![image](https://github.com/user-attachments/assets/491e2e37-faa3-4851-93a6-1784d5fbe429)
 
 Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
 Output: 6
