@@ -1,0 +1,31 @@
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        length=len(height)
+        if length<3:
+            return 0
+        else:
+            maxLeft, maxRight,leftIndex,rightIndex = height[0],height[length-1],0,length-1
+            
+            #leftBigger=false
+            
+            waterTrapped=0
+            while leftIndex < rightIndex:
+                if maxLeft<=maxRight:
+                    if maxLeft>height[leftIndex]:
+                        waterTrapped += maxLeft - height[leftIndex]
+                    leftIndex+=1
+                    if height[leftIndex]>maxLeft:
+                        maxLeft=height[leftIndex]
+                else:
+                    if maxRight>height[rightIndex]:
+                        waterTrapped += maxRight - height[rightIndex]
+                    rightIndex-=1
+                    if height[rightIndex]>maxRight:
+                        maxRight=height[rightIndex]
+
+            return waterTrapped
+            #return sum(waterTrapped)
+
+
+
+
