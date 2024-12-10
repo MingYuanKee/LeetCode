@@ -1,0 +1,47 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+        if not head or head.next is None or left==right:
+            return head
+        else:
+            nodes_to_reverse=[]
+            #leftCurrentIndex,rightCurrentIndex,currentNode,leftNode,rightNode=1,1,head,head,head
+            currentIndex,currentNode=1,head
+            while currentIndex<=right:
+                if left<=currentIndex<=right:
+                    nodes_to_reverse.append(currentNode)
+                currentNode=currentNode.next
+                currentIndex+=1
+
+            #if leftCurrentIndex==left:
+                #leftNode=currentNode
+            #    nodes_to_reverse.append(currentNode)
+
+            #while leftCurrentIndex !=left:
+            #    leftCurrentIndex+=1
+            #    currentNode=currentNode.next
+            #leftNode=currentNode
+            
+            #rightCurrentIndex=leftCurrentIndex
+            #while rightCurrentIndex !=right:
+            #    rightCurrentIndex+=1
+            #    nodes_to_reverse.append(currentNode)
+            #    if currentNode.next:
+            #        currentNode=currentNode.next
+            #rightNode=currentNode
+            reverse_values=[]
+            for node in nodes_to_reverse:
+                reverse_values.insert(0,node.val)
+            #if leftCurrentIndex<rightCurrentIndex:
+             #   leftNode.val,rightNode.val=rightNode.val,leftNode.val
+            print('reverse_values: ',reverse_values)
+            for index,node in enumerate(nodes_to_reverse):
+                node.val=reverse_values[index]
+            return head
+
+
+        
