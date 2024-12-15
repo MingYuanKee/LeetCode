@@ -1,4 +1,4 @@
-# HackerRank
+# Leetcode
 This repository contains codes related to the questions posted on LeetCode.
 
 # Usage Notice
