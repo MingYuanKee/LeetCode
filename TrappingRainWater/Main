@@ -10,8 +10,9 @@ class Solution:
             
             waterTrapped=0
             while leftIndex < rightIndex:
-            #key idea: trying to find the max left and and max right for each time the left or right index move and adding
-            #water for each new index it reaches. Water is added by reducting the minimum of max left/right from current block
+            #key idea: trying to find the max left and and max right for each time the left or right index move 
+            #(move the index with smaller value) and adding water for each new index it reaches.
+            # Water is added by reducting the minimum of max left/right from current block
                 if maxLeft<=maxRight:
                     if maxLeft>height[leftIndex]:
                         waterTrapped += maxLeft - height[leftIndex]
