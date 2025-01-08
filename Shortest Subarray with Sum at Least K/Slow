@@ -1,0 +1,22 @@
+class Solution:
+    def shortestSubarray(self, nums: List[int], k: int) -> int:
+        #listOfindexes=[]
+        #850pm
+        if len(nums)>0:
+            shortestLength=len(nums)+1
+            for index in range(len(nums)):
+                total=nums[index]
+                endIndex=index
+                while total<k and endIndex<len(nums)-1:
+                    endIndex+=1
+                    total+= nums[endIndex]
+                if (endIndex+1-index)<shortestLength and total>=k:
+                    shortestLength=endIndex+1-index
+            if shortestLength==len(nums)+1:
+                return -1
+            else:
+                return shortestLength
+        else:
+            return -1
+
+        
