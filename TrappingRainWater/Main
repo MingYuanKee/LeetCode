@@ -6,17 +6,17 @@ class Solution:
         else:
             maxLeft, maxRight,leftIndex,rightIndex = height[0],height[length-1],0,length-1
             
-            #leftBigger=false
-            
             waterTrapped=0
             while leftIndex < rightIndex:
             #key idea: trying to find the max left and and max right for each time the left or right index move 
-            #(move the index with smaller value) and adding water for each new index it reaches.
-            # Water is added by reducting the minimum of max left/right from current block
+                #(move the index with smaller value) and adding water for each new index it reaches.
                 if maxLeft<=maxRight:
+                    # Water is added by taking the min of max left/right and subtract from current block, if current block<min(maxLeft,maxRight)
                     if maxLeft>height[leftIndex]:
                         waterTrapped += maxLeft - height[leftIndex]
+                    #update left index
                     leftIndex+=1
+                    #if water at NEW left index is more than maxLeft, update maxLeft
                     if height[leftIndex]>maxLeft:
                         maxLeft=height[leftIndex]
                 else:
@@ -27,8 +27,3 @@ class Solution:
                         maxRight=height[rightIndex]
 
             return waterTrapped
-            #return sum(waterTrapped)
-
-
-
-
