@@ -1,0 +1,25 @@
+class Solution:
+    def maxOperations(self, nums: List[int], k: int) -> int:
+        #638
+        if all(num > 0 for num in nums):
+            nums=[item for item in nums if item<k]
+        elif all(num >= 0 for num in nums):
+            nums=[item for item in nums if item<=k]
+        #print('start nums: ',nums)
+        numOps=0
+        dictionary={}
+        for num in nums:
+            #print('num: ',num)
+            complement=k-num
+            if complement in dictionary and dictionary[complement]>0:
+                dictionary[complement]-=1
+                numOps+=1
+                #print('numOps: ',numOps)
+                #print(dictionary)
+            else:
+                if num in dictionary:
+                    dictionary[num]+=1
+                else:
+                    dictionary[num]=1
+                #print(dictionary)
+        return numOps
