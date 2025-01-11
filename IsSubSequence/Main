@@ -1,0 +1,20 @@
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        if s==t:
+            return True
+        if len(t)==0:
+            return False
+        if len(s)==0:
+            return True
+        else:
+            output=False
+            matchList=list(s)
+            index,secondIndex=0,0
+            while index<len(t):
+                if t[index]==matchList[0]:
+                    matchList.pop(0)
+                    if len(matchList)==0:
+                        return True
+                index+=1
+            
+            return output
