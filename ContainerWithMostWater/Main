@@ -2,7 +2,7 @@ class Solution:
     def maxArea(self, height: List[int]) -> int:
         leftPointer,rightPointer=0,len(height)-1
         maxArea=min(height[leftPointer],height[rightPointer])*(rightPointer-leftPointer)
-        newAreaLeftMove,newAreaRightMove=0,0
+
         while leftPointer<rightPointer:
         #main idea: iterate through all the index in the list using 2 pointers and update
         #max area only when valid. Each time, move the pointer with smaller height value
