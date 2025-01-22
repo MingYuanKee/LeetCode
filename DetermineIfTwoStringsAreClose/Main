@@ -1,0 +1,30 @@
+class Solution:
+    def closeStrings(self, word1: str, word2: str) -> bool:
+        outputBool=False
+        if word1 and word2 and len(word1)==len(word2):
+            dictWord1={}
+            for character in word1:
+                if character not in dictWord1:
+                    dictWord1[character]=1
+                else:
+                    dictWord1[character]+=1
+            dictWord2={}
+            for character in word2:
+                if character not in dictWord2:
+                    dictWord2[character]=1
+                else:
+                    dictWord2[character]+=1
+            #print(dictWord1,dictWord2)
+            if dictWord1==dictWord2:
+                outputBool=True
+                return outputBool
+            #print(sorted(list(dictWord1.keys())),sorted(list(dictWord2.keys())))
+            #print(sorted(list(dictWord1.values())),sorted(list(dictWord2.values())))
+            if len(dictWord1)==len(dictWord2) and sorted(list(dictWord1.keys()))==sorted(list(dictWord2.keys())) and sorted(list(dictWord1.values()))==sorted(list(dictWord2.values())):
+                outputBool=True
+                return outputBool
+            return outputBool
+        else:
+            return outputBool
+
+        
