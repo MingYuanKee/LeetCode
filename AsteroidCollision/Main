@@ -1,0 +1,49 @@
+class Solution:
+    def furtherCheck(self,outputList,asteroids,counter):
+        originalLength=outputList
+        continueFlag=True
+        while continueFlag:
+            if outputList[-1] >0 and asteroids[counter]<0 :
+                if abs(outputList[-1]) == abs(asteroids[counter]) :
+                    outputList.pop()
+                    break
+                elif abs(outputList[-1]) >abs(asteroids[counter]):
+                    break
+                elif abs(outputList[-1]) <abs(asteroids[counter]):
+                    outputList.pop()
+                    if len(outputList)==0:
+                        outputList.append(asteroids[counter])
+                        break
+            else:
+                outputList.append(asteroids[counter])
+                break
+        return outputList
+    def asteroidCollision(self, asteroids: List[int]) -> List[int]:
+        outputList=[]
+        if asteroids:
+            counter=0
+            while counter<len(asteroids):
+                if len(outputList)==0:
+                    outputList.append(asteroids[counter])
+                    counter+=1
+                else:
+                    if outputList[-1] >0 and asteroids[counter]<0:
+                        if abs(outputList[-1])>abs(asteroids[counter]):
+                            counter+=1
+                        elif abs(outputList[-1])<abs(asteroids[counter]):
+                            outputList.pop()
+                            if outputList:
+                                outputList=self.furtherCheck(outputList,asteroids,counter)
+                            else:
+                                outputList.append(asteroids[counter])
+                            counter+=1
+                        else:
+                            outputList.pop()
+                            counter+=1
+                    else:
+                        outputList.append(asteroids[counter])
+                        counter+=1
+            return outputList
+        else:
+            return outputList
+    
