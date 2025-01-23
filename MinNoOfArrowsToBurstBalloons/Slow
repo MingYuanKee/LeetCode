@@ -1,0 +1,50 @@
+class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -> int:
+        if points:
+            if len(points)==1:
+                return 1
+            else:
+                points = list(set(tuple(item) for item in points))
+                points = [list(item) for item in points]
+                dictionaryGraph={}
+                for pair in points:
+                    for number in range(pair[0],pair[1]+1):
+                        if number not in dictionaryGraph:
+                            dictionaryGraph[number]=1
+                        else:
+                            dictionaryGraph[number]+=1
+                #print('number with max: ',max(dictionaryGraph, key=dictionaryGraph.get))
+                if max(dictionaryGraph.values())==1:
+                    return len(points)
+                elif len(points)==max(dictionaryGraph.values()):
+                    return 1
+                else:
+                    print(points)
+                    #pointCopy=points.copy()
+                    shots=0
+                    not_processed=[]
+                    maximum=max(dictionaryGraph, key=dictionaryGraph.get)
+                    while any(value != 0 for value in dictionaryGraph.values()): 
+                        print('dictionaryGraph: ',dictionaryGraph)
+                        print('maximum: ',maximum)
+                        print('points: ',points)
+                        for index,pair in enumerate(points):
+                            print('pair: ',pair)
+                            if maximum in range(pair[0],pair[1]+1):
+                                print('pair with max: ',pair)
+                                for number in range(pair[0],pair[1]+1):
+                                    if dictionaryGraph[number]>0:
+                                        dictionaryGraph[number]-=1
+                                        print(number,': ',dictionaryGraph[number])
+                                #pointCopy.remove(pair)
+                                #print('pointCopy: ',pointCopy)
+                            else:
+                                if pair not in not_processed:
+                                    not_processed.append(pair)
+                        shots+=1
+                        print('shots: ',shots)
+                        maximum=max(dictionaryGraph, key=dictionaryGraph.get)
+                        points=not_processed
+                    return shots
+        else: return 0
+        
