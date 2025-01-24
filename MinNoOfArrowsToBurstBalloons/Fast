@@ -1,0 +1,19 @@
+class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -> int:
+        if points:
+            if len(points)==1:
+                return 1
+            else:
+                points=sorted(points, key=lambda x: x[1], reverse=False)
+                print(points)
+                shots=1
+                reference=points[0][1]
+                for index in range(1,len(points)):
+                    print('reference',reference)
+                    print('number we looking at',points[index][0])
+                    if points[index][0]>reference:
+                        shots+=1
+                        reference=points[index][1]
+                return shots
+        else: return 0
+        
