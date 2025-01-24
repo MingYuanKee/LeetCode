@@ -1,0 +1,33 @@
+class Solution:
+            def predictPartyVictory(self, senate: str) -> str:
+                if senate:
+                    if len(senate)==2:
+                        if senate[0]=='R':
+                            return 'Radiant'
+                        else: return 'Dire'
+                    Rindex=deque()
+                    Dindex=deque()
+                    for index,item in enumerate(senate):
+                        if item=='R':
+                            Rindex.append(index)
+                        else:
+                            Dindex.append(index)
+                    #print('Rindex: ',Rindex)
+                    #print('Dindex: ',Dindex)
+                    backIndex=len(senate)
+                    while Dindex and Rindex:
+                        DindexRemoved=Dindex.popleft()
+                        RindexRemoved=Rindex.popleft()
+                        if DindexRemoved<RindexRemoved:
+                            Dindex.append(backIndex)
+                            backIndex+=1
+                        else:
+                            Rindex.append(backIndex)
+                            backIndex+=1
+                        #print('Rindex: ',Rindex)
+                        #print('Dindex: ',Dindex)
+                        #print('---------------------')
+                if Rindex:
+                    return  'Radiant'
+                else:
+                    return  'Dire'
