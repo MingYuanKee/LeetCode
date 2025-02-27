@@ -1,6 +1,5 @@
 class Solution:
     def furtherCheck(self,outputList,asteroids,counter):
-        originalLength=outputList
         continueFlag=True
         while continueFlag:
             if outputList[-1] >0 and asteroids[counter]<0 :
