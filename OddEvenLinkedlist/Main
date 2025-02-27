@@ -6,7 +6,6 @@
 class Solution:
     def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         evenList=[]
-        evenIndex=[]
         node=head
         index=0
         while node:
@@ -15,6 +14,7 @@ class Solution:
                 evenList.append(node.val)
             node=node.next
         indexCounter=0
+        # need reset the node to head
         node=head
         while indexCounter<len(evenList):
             if node.next:
