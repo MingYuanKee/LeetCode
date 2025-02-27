@@ -12,21 +12,17 @@ class Solution:
                             Rindex.append(index)
                         else:
                             Dindex.append(index)
-                    #print('Rindex: ',Rindex)
-                    #print('Dindex: ',Dindex)
                     backIndex=len(senate)
                     while Dindex and Rindex:
                         DindexRemoved=Dindex.popleft()
                         RindexRemoved=Rindex.popleft()
                         if DindexRemoved<RindexRemoved:
+                            # adding backIndex again as the same person can vote again later
                             Dindex.append(backIndex)
                             backIndex+=1
                         else:
                             Rindex.append(backIndex)
                             backIndex+=1
-                        #print('Rindex: ',Rindex)
-                        #print('Dindex: ',Dindex)
-                        #print('---------------------')
                 if Rindex:
                     return  'Radiant'
                 else:
